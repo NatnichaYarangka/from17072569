@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แบบฟอร์มเก็บข้อมูลนักเรียน</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",Tahoma,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f0f0f,#2b0000,#550000);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+.container{
+    width:100%;
+    max-width:950px;
+    background:#111;
+    color:#fff;
+    border-radius:18px;
+    padding:35px;
+    box-shadow:0 0 25px rgba(255,0,0,.45);
+}
+
+h1{
+    text-align:center;
+    color:#ff3b3b;
+    margin-bottom:25px;
+}
+
+fieldset{
+    border:2px solid #cc0000;
+    border-radius:12px;
+    margin-bottom:25px;
+    padding:20px;
+}
+
+legend{
+    color:#ff4d4d;
+    font-weight:bold;
+    font-size:18px;
+    padding:0 10px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.full{
+    grid-column:1 / -1;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:600;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:10px 12px;
+    border:none;
+    border-radius:8px;
+    background:#222;
+    color:#fff;
+    font-size:15px;
+    border:1px solid #555;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#ff0000;
+    box-shadow:0 0 10px rgba(255,0,0,.5);
+}
+
+textarea{
+    resize:vertical;
+}
+
+.inline{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:8px;
+}
+
+.inline label{
+    font-weight:normal;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:20px;
+}
+
+button{
+    padding:12px 35px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.submit{
+    background:#d60000;
+    color:white;
+}
+
+.submit:hover{
+    background:#ff1a1a;
+}
+
+.reset{
+    background:#333;
+    color:white;
+}
+
+.reset:hover{
+    background:#555;
+}
+
+input[type="color"]{
+    height:45px;
+    padding:3px;
+}
+
+input[type="file"]{
+    background:#1a1a1a;
+}
+
+@media(max-width:768px){
+
+.form-grid{
+    grid-template-columns:1fr;
+}
+
+.container{
+    padding:20px;
+}
+
+.buttons{
+    flex-direction:column;
+}
+
+button{
+    width:100%;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>แบบฟอร์มเก็บข้อมูลนักเรียน</h1>
+
+<form>
+
+<!-- 1 -->
+<fieldset>
+<legend>1. ข้อมูลส่วนตัว</legend>
+
+<div class="form-grid">
+
+<div>
+<label>คำนำหน้า</label>
+<select required>
+<option value="">-- เลือก --</option>
+<option>นาย</option>
+<option>นางสาว</option>
+<option>เด็กชาย</option>
+<option>เด็กหญิง</option>
+</select>
+</div>
+
+<div>
+<label>ชื่อ-นามสกุล</label>
+<input type="text" placeholder="กรอกชื่อ-นามสกุล" required>
+</div>
+
+<div>
+<label>ชื่อเล่น</label>
+<input type="text" placeholder="ชื่อเล่น">
+</div>
+
+<div>
+<label>เลขประจำตัวนักเรียน</label>
+<input type="text" placeholder="เช่น 65001" required>
+</div>
+
+<div>
+<label>วันเดือนปีเกิด</label>
+<input type="date">
+</div>
+
+<div>
+<label>อายุ</label>
+<input type="number" min="1" max="100">
+</div>
+
+</div>
+</fieldset>
+
+<!-- 2 -->
+<fieldset>
+<legend>2. ข้อมูลการติดต่อ</legend>
+
+<div class="form-grid">
+
+<div>
+<label>อีเมล</label>
+<input type="email" placeholder="example@email.com">
+</div>
+
+<div>
+<label>เบอร์โทรศัพท์</label>
+<input type="tel" placeholder="08xxxxxxxx">
+</div>
+
+<div class="full">
+<label>ที่อยู่</label>
+<textarea rows="4"></textarea>
+</div>
+
+</div>
+</fieldset>
+
+<!-- 3 -->
+<fieldset>
+<legend>3. ข้อมูลส่วนบุคคล</legend>
+
+<div class="form-grid">
+
+<div>
+<label>เพศ</label>
+<div class="inline">
+<label><input type="radio" name="gender"> ชาย</label>
+<label><input type="radio" name="gender"> หญิง</label>
+<label><input type="radio" name="gender"> อื่น ๆ</label>
+</div>
+</div>
+
+<div>
+<label>ศาสนา</label>
+<select>
+<option>พุทธ</option>
+<option>คริสต์</option>
+<option>อิสลาม</option>
+<option>ฮินดู</option>
+<option>อื่น ๆ</option>
+</select>
+</div>
+
+<div>
+<label>จังหวัด</label>
+<input type="text" placeholder="จังหวัด">
+</div>
+
+<div>
+<label>กรุ๊ปเลือด</label>
+<select>
+<option>A</option>
+<option>B</option>
+<option>AB</option>
+<option>O</option>
+</select>
+</div>
+
+</div>
+</fieldset>
+
+<!-- 4 -->
+<fieldset>
+<legend>4. ความสนใจ</legend>
+
+<div class="form-grid">
+
+<div class="full">
+<label>งานอดิเรก</label>
+
+<div class="inline">
+<label><input type="checkbox"> กีฬา</label>
+<label><input type="checkbox"> ดนตรี</label>
+<label><input type="checkbox"> อ่านหนังสือ</label>
+<label><input type="checkbox"> เล่นเกม</label>
+<label><input type="checkbox"> ดูหนัง</label>
+</div>
+
+</div>
+
+<div>
+<label>สีที่ชอบ</label>
+<input type="color">
+</div>
+
+<div>
+<label>เว็บไซต์ที่ชอบ</label>
+<input type="url" placeholder="https://example.com">
+</div>
+
+</div>
+</fieldset>
+
+<!-- 5 -->
+<fieldset>
+<legend>5. ข้อมูลการศึกษา</legend>
+
+<div class="form-grid">
+
+<div>
+<label>ระดับชั้น</label>
+<select>
+<option>มัธยมศึกษาปีที่ 1</option>
+<option>มัธยมศึกษาปีที่ 2</option>
+<option>มัธยมศึกษาปีที่ 3</option>
+<option>มัธยมศึกษาปีที่ 4</option>
+<option>มัธยมศึกษาปีที่ 5</option>
+<option>มัธยมศึกษาปีที่ 6</option>
+</select>
+</div>
+
+<div>
+<label>ห้องเรียน</label>
+<input type="text" placeholder="เช่น 4/1">
+</div>
+
+<div>
+<label>แผนการเรียน</label>
+<select>
+<option>วิทยาศาสตร์-คณิตศาสตร์</option>
+<option>ศิลป์-คำนวณ</option>
+<option>ศิลป์-ภาษา</option>
+<option>ทั่วไป</option>
+</select>
+</div>
+
+<div>
+<label>เกรดเฉลี่ย (GPA)</label>
+<input type="number" min="0" max="4" step="0.01">
+</div>
+
+</div>
+</fieldset>
+
+<!-- 6 -->
+<fieldset>
+<legend>6. การอัปโหลดไฟล์</legend>
+
+<div class="form-grid">
+
+<div>
+<label>รูปภาพประจำตัว</label>
+<input type="file" accept="image/*">
+</div>
+
+<div>
+<label>เอกสารเพิ่มเติม</label>
+<input type="file">
+</div>
+
+</div>
+
+</fieldset>
+
+<!-- 7 -->
+<fieldset>
+
+<legend>7. ความคิดเห็นเพิ่มเติม</legend>
+
+<label>แสดงความคิดเห็น</label>
+
+<textarea rows="5" placeholder="กรอกความคิดเห็น..."></textarea>
+
+</fieldset>
+
+<!-- 8 -->
+<fieldset>
+
+<legend>8. ยืนยันข้อมูล</legend>
+
+<div class="inline">
+<label>
+<input type="checkbox" required>
+ข้าพเจ้ายอมรับเงื่อนไขการใช้งาน และยืนยันว่าข้อมูลทั้งหมดถูกต้อง
+</label>
+</div>
+
+<div class="buttons">
+<button type="submit" class="submit">ส่งข้อมูล</button>
+<button type="reset" class="reset">ล้างข้อมูล</button>
+</div>
+
+</fieldset>
+
+</form>
+
+</div>
+
+</body>
+</html>
